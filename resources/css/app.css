@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/*
+ * PENTING: semua class di bawah ini SENGAJA ditaruh di @layer components,
+ * bukan sebagai CSS polos. Di Tailwind v4, CSS polos (di luar layer) selalu
+ * menang melawan utility class (pl-10, lg:col-span-2, dll) apa pun urutannya
+ * di file. Kalau ditaruh di @layer components, utility class yang ditulis
+ * di HTML akan benar-benar bisa meng-override style dasar di sini.
+ *
+ * Ini yang jadi penyebab bug "harga Rp ketiban angka" sebelumnya — .form-input
+ * di style block lama (bukan di layer) menang lawan pl-10.
+ */
+@layer components {
+
+    .app-modal { opacity: 0; transition: opacity .2s ease-out; }
+    .app-modal.modal-show { opacity: 1; }
+    .app-modal .modal-card {
+        transform: scale(.95) translateY(6px);
+        opacity: 0;
+        transition: transform .2s ease-out, opacity .2s ease-out;
+    }
+    .app-modal.modal-show .modal-card { transform: scale(1) translateY(0); opacity: 1; }
+
+    .nav-link {
+        display: flex; align-items: center; gap: 10px;
+        padding: 10px 12px; border-radius: 12px;
+        font-size: 13px; font-weight: 600;
+        transition: all 0.15s ease;
+        color: #64748b;
+        text-decoration: none;
+    }
+    .nav-link:hover { background: #f1f5f9; color: #1e293b; }
+    .nav-link.active-indigo  { background: #4f46e5; color: #fff; box-shadow: 0 4px 14px rgba(79,70,229,.25); }
+    .nav-link.active-emerald { background: #059669; color: #fff; box-shadow: 0 4px 14px rgba(5,150,105,.25); }
+    .nav-link.active-rose    { background: #e11d48; color: #fff; box-shadow: 0 4px 14px rgba(225,29,72,.25); }
+    .nav-link.active-amber   { background: #d97706; color: #fff; box-shadow: 0 4px 14px rgba(217,119,6,.25); }
+    .nav-link.active-violet  { background: #7c3aed; color: #fff; box-shadow: 0 4px 14px rgba(124,58,237,.25); }
+
+    .card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; }
+    .card-hover { transition: box-shadow 0.2s, transform 0.2s; }
+    .card-hover:hover { box-shadow: 0 8px 30px rgba(0,0,0,.07); transform: translateY(-2px); }
+
+    .btn-primary { background:#4f46e5; color:#fff; font-weight:700; font-size:13px; padding:10px 18px; border-radius:10px; border:none; cursor:pointer; transition:background .15s; display:inline-flex; align-items:center; gap:6px; text-decoration:none; }
+    .btn-primary:hover { background:#4338ca; }
+    .btn-emerald { background:#059669; color:#fff; font-weight:700; font-size:13px; padding:10px 18px; border-radius:10px; border:none; cursor:pointer; transition:background .15s; display:inline-flex; align-items:center; gap:6px; text-decoration:none; }
+    .btn-emerald:hover { background:#047857; }
+    .btn-ghost { background:#f8fafc; color:#475569; font-weight:600; font-size:13px; padding:10px 18px; border-radius:10px; border:1px solid #e2e8f0; cursor:pointer; transition:all .15s; display:inline-flex; align-items:center; gap:6px; text-decoration:none; }
+    .btn-ghost:hover { background:#f1f5f9; color:#1e293b; }
+
+    .form-label { display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#94a3b8; margin-bottom:6px; }
+    .form-input { width:100%; background:#f8fafc; border:1.5px solid #e2e8f0; border-radius:10px; padding:10px 14px; font-size:13px; color:#1e293b; transition:border-color .15s, box-shadow .15s; outline:none; }
+    .form-input:focus { border-color:#4f46e5; box-shadow:0 0 0 3px rgba(79,70,229,.1); }
+    .form-input.error { border-color:#f43f5e; box-shadow:0 0 0 3px rgba(244,63,94,.1); }
+    .form-select { width:100%; background:#f8fafc url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") no-repeat right 12px center/16px; border:1.5px solid #e2e8f0; border-radius:10px; padding:10px 38px 10px 14px; font-size:13px; color:#1e293b; transition:border-color .15s; outline:none; appearance:none; }
+    .form-select:focus { border-color:#4f46e5; box-shadow:0 0 0 3px rgba(79,70,229,.1); }
+
+    .badge { display:inline-flex; align-items:center; font-size:10px; font-weight:700; padding:3px 8px; border-radius:99px; }
+    .table-row:hover { background:#f8fafc; }
+    .section-title { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; padding: 12px 12px 6px; }
+}
+
+/*
+ * Bagian di bawah ini AMAN tetap sebagai CSS polos (tidak perlu @layer),
+ * karena tidak pernah dipasangkan bareng utility class yang saling
+ * bertabrakan — cuma pengaturan struktural halaman (scrollbar, tinggi
+ * baris header/sidebar, toggle sidebar mobile).
+ */
+* { box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+
+[x-cloak] { display: none !important; }
+
+.brand-row, .topbar-row { height: 72px; }
+
+#mobile-menu { display:none; }
+@media (max-width: 1023px) {
+    #sidebar { transform: translateX(-100%); position: fixed; z-index:50; height:100vh; transition: transform .3s ease; }
+    #sidebar.open { transform: translateX(0); }
+    #overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:49; }
+    #overlay.show { display:block; }
+    #mobile-menu { display:flex; }
+}
