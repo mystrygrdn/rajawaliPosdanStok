@@ -1,59 +1,136 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="200" alt="Laravel Logo"/>
 </p>
 
-## About Laravel
+<h1 align="center">🦅 Rajawali Stok — POS & Inventory Management System</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  A desktop point-of-sale and inventory management system built for <strong>Toko Rajawali</strong>, a multi-category retail store in Tondano, North Sulawesi, selling computers &amp; electronics, stationery (ATK), cakes &amp; pastries, snacks, beverages, and packaging supplies.
+  <br/>
+  <em>Packaged as a native Windows desktop application using NativePHP + Electron.</em>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-11-red?logo=laravel" alt="Laravel"/>
+  <img src="https://img.shields.io/badge/PHP-8.3-blue?logo=php" alt="PHP"/>
+  <img src="https://img.shields.io/badge/Alpine.js-3-8BC0D0?logo=alpinedotjs" alt="Alpine.js"/>
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-4-38BDF8?logo=tailwindcss" alt="Tailwind CSS"/>
+  <img src="https://img.shields.io/badge/NativePHP-Desktop-6C47FF" alt="NativePHP"/>
+  <img src="https://img.shields.io/badge/Electron-Windows%20Build-2B2E3A?logo=electron" alt="Electron"/>
+  <img src="https://img.shields.io/badge/SQLite-Local%20DB-003B57?logo=sqlite" alt="SQLite"/>
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📖 About This Project
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+**Rajawali Stok** is a point-of-sale (POS) and inventory management system built for **Toko Rajawali**, a retail store in Tondano, North Sulawesi that sells a wide mix of products — from computer accessories and electronics to stationery, cakes & pastries, snacks, drinks, and packaging materials.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The system was built to replace manual, paper-based stock tracking and cash-register sales with a single, streamlined application that keeps stock counts, sales, and reporting all in one place. It runs as a native desktop app (via NativePHP + Electron) so it can be installed and used directly on the store's computer without needing a separate server, PHP, or browser setup.
 
-## Laravel Sponsors
+The system supports three distinct roles:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Admin** — full access to POS, inventory, and reporting.
+- **Owner** — access to dashboards, reports, and business oversight.
+- **Dapur (Kitchen)** — scoped access limited to bakery-related categories (finished cakes/pastries and raw baking ingredients).
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## ✨ Features
 
-## Contributing
+### 🛒 Point of Sale (Kasir)
+- Fast, click-to-add product grid organized by category tabs (ATK, Electronics, Cake & Pastry, Snacks, Beverages, Packaging)
+- Live product search
+- Real-time cart with quantity controls and running total
+- Multiple payment methods: Cash (with change calculation), QRIS, and Bank Transfer
+- Stock-aware checkout — prevents overselling and flags low/out-of-stock items
+- Thermal-style (80mm) receipt printing, rendered as a print-ready HTML document for full compatibility with the desktop app's print preview
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 📦 Inventory Management
+- Stock-in (barang masuk) and stock-out (barang keluar) tracking
+- Product catalog management across multiple categories
+- Low-stock warnings directly in the POS and catalog views
+- Role-scoped category access (e.g. kitchen staff only see bakery-related stock)
 
-## Code of Conduct
+### 📊 Dashboard & Reporting
+- Real-time dashboard defaulting to today's activity, with historical filters
+- Excel export with multiple color-coded sheets (via PhpSpreadsheet)
+- PDF report generation (via DomPDF)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 🔐 Security & Reliability
+- Role-based access control with Laravel Gates
+- CSRF protection, mass-assignment protection, and hardened middleware
+- Eager-loaded queries to avoid N+1 performance issues
+- Foreign-key indexed migrations for data integrity
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🛠️ Tech Stack
 
-## License
+| Layer | Technology |
+|---|---|
+| Backend Framework | Laravel (PHP) |
+| Frontend | Blade Templating, Alpine.js, Tailwind CSS |
+| UI Feedback | SweetAlert2, Chart.js |
+| Desktop Runtime | NativePHP + Electron |
+| Local Database (Desktop) | SQLite |
+| Reporting | PhpSpreadsheet (Excel), DomPDF (PDF) |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 🚀 Installation & Setup
+
+### Prerequisites
+- PHP >= 8.3
+- Composer
+- Node.js & NPM
+- (For desktop builds) Windows with Developer Mode enabled
+
+### Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mystrygrdn/tokorajawali-pos-inventory.git
+   cd tokorajawali-pos-inventory
+   ```
+
+2. **Install dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
+
+3. **Configure environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Set up the database**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+5. **Run in the browser (recommended for development)**
+   ```bash
+   npm run dev
+   php artisan serve
+   ```
+
+6. **Run as a native desktop app**
+   ```bash
+   php artisan native:install
+   php artisan native:serve
+   ```
+
+7. **Build a distributable Windows installer**
+   ```bash
+   php artisan native:build win
+   ```
+   The finished installer will be generated inside `nativephp/electron/dist/`.
+
+---
+
+## 📄 License
+
+This project is built for internal use by Toko Rajawali. Please contact the repository owner before reusing or redistributing.
